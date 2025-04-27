@@ -83,6 +83,8 @@ const Volunteer = () => {
       <div className='jobs-main-container d-flex gap-16'>
         {volunteerData?.length > 0 ? (
           volunteerData?.map((val, key) => {
+            console.log(val);
+
             return (
               <div
                 className='jobs-container d-flex-col d-flex-jsb gap-8'
@@ -102,10 +104,16 @@ const Volunteer = () => {
                     Recipient email:&nbsp;<strong>{val?.email}</strong>
                   </p>
                   <p>
-                    Recipient address:&nbsp;<strong>{val?.address}</strong>
+                    Pickup address:&nbsp;<strong>{val?.foodAddress}</strong>
                   </p>
                   <p>
-                    Contact:&nbsp;<strong>{val?.contact}</strong>
+                    Delivery address:&nbsp;<strong>{val?.address}</strong>
+                  </p>
+                  <p>
+                    Donor Contact:&nbsp;<strong>{val?.donorContact}</strong>
+                  </p>
+                  <p>
+                    Recipient Contact:&nbsp;<strong>{val?.contact}</strong>
                   </p>
                 </div>
 
@@ -153,10 +161,20 @@ const Volunteer = () => {
                     <strong>Email:</strong> {selectedData?.email}
                   </p>
                   <p>
-                    <strong>Address:</strong> {selectedData?.address}
+                    Pickup address:&nbsp;
+                    <strong>{selectedData?.foodAddress}</strong>
                   </p>
                   <p>
-                    <strong>Contact:</strong> {selectedData?.contact}
+                    Delivery address:&nbsp;
+                    <strong>{selectedData?.address}</strong>
+                  </p>
+                  <p>
+                    Donor Contact:&nbsp;
+                    <strong>{selectedData?.donorContact}</strong>
+                  </p>
+                  <p>
+                    Recipient Contact:&nbsp;
+                    <strong>{selectedData?.contact}</strong>
                   </p>
                   <p>
                     <strong>Servings:</strong> {selectedData?.servings}

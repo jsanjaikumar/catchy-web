@@ -78,6 +78,34 @@ const FoodListings = () => {
   };
 
   const handleSubmit = async () => {
+    if (
+      !formData.name.trim() ||
+      !formData.address.trim() ||
+      !formData.contact.trim() ||
+      !formData.email.trim() ||
+      !formData.servings
+    ) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    const contactRegex = /^[0-9]{7,15}$/;
+    if (!contactRegex.test(formData.contact)) {
+      toast.error("Please enter a valid contact number");
+      return;
+    }
+
+    if (Number(formData.servings) <= 0) {
+      toast.error("Servings must be greater than 0");
+      return;
+    }
+
     const data = {
       foodId: selectedFood?._id,
       ...formData,
@@ -98,14 +126,12 @@ const FoodListings = () => {
       }
 
       const result = await response.json();
-      const notify = () => toast.success("Request successful!");
-      notify();
+      toast.success("Request successful!");
 
       handleCloseModal();
       fetchFoodListing();
     } catch (error) {
-      const notify = () => toast.error(`${error}`);
-      notify();
+      toast.error(`${error}`);
       console.error("Error submitting request:", error);
     }
   };
