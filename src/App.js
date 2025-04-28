@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+//import logo from "./assets/logo.png";
 import "./App.css";
 import LoginSignUp from "./components/loginSignUp";
 import DonorForm from "./components/donorForm";
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      {path.pathname != "/" && <Navbar />}
+      {path.pathname !== "/" && <Navbar />}
       <>
         <Routes>
           <Route path='/' element={<LoginSignUp />} />
